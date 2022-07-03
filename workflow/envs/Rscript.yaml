@@ -1,0 +1,28 @@
+channels:
+  - anaconda-fusion
+  - defaults
+  - bioconda
+  - r
+  - pypi
+  - conda-forge
+dependencies:
+  - r-base=4.1
+  - r-essentials
+  - r-data.table
+  - r-rlang
+  - r-rmarkdown
+  - r-ggplot2
+  - r-ggrepel
+  - bioconductor-deseq2
+  - r-dt
+  - r-pheatmap
+  - r-corrplot
+  - r-reshape2
+  - r-plotly
+  - r-scales
+  - r-crosstalk
+  - r-gprofiler2
+  - r-ggpubr
+  - bioconductor-summarizedexperiment
+  - bioconductor-rtracklayer
+  - bioconductor-tximport

@@ -1,0 +1,174 @@
+{
+    "counting": {
+        "annotation_file_type": "GTF",
+        "counting_mode": "Union",
+        "drop_nonunique": true,
+        "feature": "exon",
+        "group_feature_by": "gene_id",
+        "strandedness": "0",
+        "yield_size": 2000000
+    },
+    "execution": {
+        "jobs": 16,
+        "memory": 16384,
+        "nice": 19,
+        "rules": {
+            "__default__": {
+                "memory": 2048,
+                "threads": 1
+            },
+            "check_annotation_files": {
+                "memory": 16384,
+                "threads": 1
+            },
+            "collate_read_counts": {
+                "memory": 1024,
+                "threads": 1
+            },
+            "count_reads": {
+                "memory": 4096,
+                "threads": 1
+            },
+            "counts_from_salmon": {
+                "memory": 1024,
+                "threads": 1
+            },
+            "coverage_bamCoverage": {
+                "memory": 4096,
+                "threads": 1
+            },
+            "coverage_megadepth": {
+                "memory": 4096,
+                "threads": 1
+            },
+            "featureCounts": {
+                "memory": 4096,
+                "threads": 4
+            },
+            "hisat2": {
+                "memory": 16384,
+                "threads": 8
+            },
+            "hisat2-build": {
+                "memory": 16384,
+                "threads": 16
+            },
+            "index_bam": {
+                "memory": 1024,
+                "threads": 1
+            },
+            "multiqc": {
+                "memory": 1024,
+                "threads": 2
+            },
+            "norm_counts_deseq": {
+                "memory": 1024,
+                "threads": 1
+            },
+            "reports": {
+                "memory": 4096,
+                "threads": 1
+            },
+            "salmon_index": {
+                "memory": 4096,
+                "threads": 8
+            },
+            "salmon_quant": {
+                "memory": 4096,
+                "threads": 8
+            },
+            "star_index": {
+                "memory": 32768,
+                "threads": 16
+            },
+            "star_map": {
+                "memory": 16384,
+                "threads": 8
+            },
+            "translate_sample_sheet_for_report": {
+                "memory": 1024,
+                "threads": 1
+            },
+            "trim_qc_reads": {
+                "memory": 4096,
+                "threads": 1
+            }
+        },
+        "target": null
+    },
+    "locations": {
+        "cdna-fasta": "/home/nnlrl/genome/pig/Sus_scrofa.Sscrofa11.1.cdna.all.fa",
+        "genome-fasta": "/home/nnlrl/genome/pig/Sus_scrofa.Sscrofa11.1.dna.toplevel.fa",
+        "gtf-file": "/home/nnlrl/genome/pig/Sus_scrofa.Sscrofa11.1.104.gtf",
+        "output-dir": "/home/nnlrl/ngs/rna/output",
+        "reads-dir": "/mnt/f/pig_lcdm",
+        "sample-sheet": "/home/nnlrl/ngs/rna/config/sample_sheet.csv"
+    },
+    "mapping": {
+        "genome_build": "GRCm38",
+        "mapper": "hisat2"
+    },
+    "organism": "",
+    "tools": {
+        "Rscript": {
+            "args": "--vanilla",
+            "executable": "Rscript"
+        },
+        "bamCoverage": {
+            "args": "--normalizeUsing BPM --numberOfProcessors 2",
+            "executable": "bamCoverage"
+        },
+        "fastp": {
+            "args": "--adapter_sequence=AGATCGGAAGAGCACACGTCTGAACTCCAGTCA --adapter_sequence_r2=AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT",
+            "executable": "fastp"
+        },
+        "featureCounts": {
+            "args": "",
+            "executable": "featureCounts"
+        },
+        "gunzip": {
+            "args": "",
+            "executable": "gunzip"
+        },
+        "hisat2": {
+            "args": "",
+            "executable": "hisat2"
+        },
+        "hisat2-build": {
+            "args": "",
+            "executable": "hisat2-build"
+        },
+        "megadepth": {
+            "args": "",
+            "executable": "megadepth"
+        },
+        "multiqc": {
+            "args": "",
+            "executable": "multiqc"
+        },
+        "salmon_index": {
+            "args": "index",
+            "executable": "salmon"
+        },
+        "salmon_quant": {
+            "args": "quant",
+            "executable": "salmon"
+        },
+        "samtools": {
+            "args": "",
+            "executable": "samtools"
+        },
+        "sed": {
+            "args": "",
+            "executable": "sed"
+        },
+        "star_index": {
+            "args": "",
+            "executable": "STAR"
+        },
+        "star_map": {
+            "args": "",
+            "executable": "STAR"
+        }
+    }
+}

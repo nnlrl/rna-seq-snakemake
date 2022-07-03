@@ -1,0 +1,3 @@
+name,reads,reads2,sample_type
+LCDM_1,SRR18143352_1.fastq.gz,SRR18143352_2.fastq.gz,LCDM
+LCDM_2,SRR18143353_1.fastq.gz,SRR18143353_2.fastq.gz,LCDM
