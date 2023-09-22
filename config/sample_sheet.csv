@@ -1,3 +1,7 @@
 name,reads,reads2,sample_type
-LCDM_1,SRR18143352_1.fastq.gz,SRR18143352_2.fastq.gz,LCDM
-LCDM_2,SRR18143353_1.fastq.gz,SRR18143353_2.fastq.gz,LCDM
+Naive_1,ERR1924243.fastq.gz,,Naive
+Naive_2,ERR1924244.fastq.gz,,Naive
+Naive_3,ERR1924245.fastq.gz,,Naive
+Primed_1,ERR1924246.fastq.gz,,Primed
+Primed_2,ERR1924247.fastq.gz,,Primed
+Primed_3,ERR1924248.fastq.gz,,Primed

@@ -13,7 +13,7 @@ rule counts_from_SALMON:
     log:
         os.path.join(LOG_DIR, "salmon", 'salmon_import_counts.log')
     conda:
-        "../envs/Rscript.yaml"
+        WORKDIR + "/workflow/envs/Rscript.yaml"
     shell:
         "{RSCRIPT_EXEC} {SCRIPTS_DIR}/counts_matrix_from_SALMON.R {SALMON_DIR} {COUNTS_DIR} {input.colDataFile} >> {log} 2>&1"
 
@@ -59,11 +59,11 @@ rule featureCounts:
         group_by     = config['counting']['group_feature_by'],
         annotation_file_type = config['counting']['annotation_file_type'],
     conda:
-        "../envs/featureCounts.yaml"
+        WORKDIR + "/workflow/envs/featureCounts.yaml"
     threads:
         FEATURECOUNTS_THREADS
     script:
-        "../scripts/featureCounts.py"
+        WORKDIR + "/workflow/scripts/featureCounts.py"
 
 
 rule collate_read_counts:
@@ -79,7 +79,7 @@ rule collate_read_counts:
         mapped_dir = os.path.join(MAPPED_READS_DIR, MAPPER),
         script = os.path.join(SCRIPTS_DIR, "collate_read_counts.R")
     conda:
-        "../envs/Rscript.yaml"
+        WORKDIR + "/workflow/envs/Rscript.yaml"
     shell:
         "{RSCRIPT_EXEC} {params.script} {params.mapped_dir} {output} >> {log} 2>&1"
 
@@ -102,7 +102,7 @@ rule norm_counts_deseq:
         script=os.path.join(SCRIPTS_DIR, "norm_counts_deseq.R"),
         outdir=os.path.join(COUNTS_DIR, "normalized", MAPPER)
     conda:
-        "../envs/Rscript.yaml"
+        WORKDIR + "/workflow/envs/Rscript.yaml"
     shell:
         "{RSCRIPT_EXEC} {params.script} {input.counts_file} {input.colDataFile} {params.outdir} >> {log} 2>&1"
 
@@ -125,7 +125,7 @@ rule report1:
     resources:
         mem_mb = config["execution"]["rules"]["reports"]["memory"]
     conda:
-        "../envs/Rscript.yaml"
+        WORKDIR + "/workflow/envs/Rscript.yaml"
     shell:
         "{RSCRIPT_EXEC} {params.reportR} --prefix='{wildcards.analysis}' --reportFile={params.reportRmd} --countDataFile={input.counts} --colDataFile={input.coldata} --gtfFile={GTF_FILE} --caseSampleGroups='{params.case}' --controlSampleGroups='{params.control}' --covariates='{params.covariates}'  --workdir={params.outdir} --organism='{ORGANISM}'  >> {log} 2>&1"
 
@@ -147,7 +147,7 @@ rule report2:
     resources:
         mem_mb = config["execution"]["rules"]["reports"]["memory"]
     conda:
-        "../envs/Rscript.yaml"
+        WORKDIR + "/workflow/envs/Rscript.yaml"
     shell:
         "{RSCRIPT_EXEC} {params.reportR} --prefix='{wildcards.analysis}.salmon.transcripts' --reportFile={params.reportRmd} --countDataFile={input.counts} --colDataFile={input.coldata} --gtfFile={GTF_FILE} --caseSampleGroups='{params.case}' --controlSampleGroups='{params.control}' --covariates='{params.covariates}' --workdir={params.outdir} --organism='{ORGANISM}' >> {log} 2>&1"
 
@@ -169,6 +169,6 @@ rule report3:
     resources:
         mem_mb = config["execution"]["rules"]["reports"]["memory"]
     conda:
-        "../envs/Rscript.yaml"
+        WORKDIR + "/workflow/envs/Rscript.yaml"
     shell:
         "{RSCRIPT_EXEC} {params.reportR} --prefix='{wildcards.analysis}.salmon.genes' --reportFile={params.reportRmd} --countDataFile={input.counts} --colDataFile={input.coldata} --gtfFile={GTF_FILE} --caseSampleGroups='{params.case}' --controlSampleGroups='{params.control}' --covariates='{params.covariates}' --workdir={params.outdir} --organism='{ORGANISM}' >> {log} 2>&1"

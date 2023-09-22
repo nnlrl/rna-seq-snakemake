@@ -10,7 +10,7 @@ rule star_index:
     log:
         os.path.join(LOG_DIR, 'star_index.log')
     conda:
-        "../envs/star.yaml"
+        WORKDIR + "/workflow/envs/star.yaml"
     threads:
         STAR_INDEX_THREADS
     shell:
@@ -29,7 +29,7 @@ rule hisat2_index:
     log:
         os.path.join(LOG_DIR, 'hisat2_index.log')
     conda:
-        "../envs/hisat2.yaml"
+        WORKDIR + "/workflow/envs/hisat2.yaml"
     threads:
         HISAT2_BUILD_THREADS
     shell:
@@ -48,7 +48,7 @@ rule salmon_index:
     log:
         os.path.join(LOG_DIR, "salmon", 'salmon_index.log')
     conda:
-        "../envs/salmon.yaml"
+        WORKDIR + "/workflow/envs/salmon.yaml"
     threads:
         SALMON_INDEX_THREADS
     shell:
@@ -73,7 +73,7 @@ rule star_map:
     log:
         os.path.join(LOG_DIR, 'star', 'star_map_{sample}.log')
     conda:
-        "../envs/star.yaml"
+        WORKDIR + "/workflow/envs/star.yaml"
     threads:
         STAR_MAP_THREADS
     shell:
@@ -96,7 +96,7 @@ rule hisat2_map:
         os.path.join(LOG_DIR, 'hisat2', 'hisat2_map_{sample}.log'),
         os.path.join(LOG_DIR, 'hisat2', 'samtools.hisat2.{sample}.log')
     conda:
-        "../envs/hisat2.yaml"
+        WORKDIR + "/workflow/envs/hisat2.yaml"
     threads:
         HISAT2_THREADS
     shell:
@@ -115,7 +115,7 @@ rule index_bam:
     resources:
         mem_mb = config["execution"]["rules"]["index_bam"]["memory"]
     conda:
-        "../envs/samtools.yaml"
+        WORKDIR + "/workflow/envs/samtools.yaml"
     shell:
         "{SAMTOOLS_EXEC} index {input} {output}"
 
@@ -140,8 +140,8 @@ rule salmon_quant:
     log:
         os.path.join(LOG_DIR, "salmon", 'salmon_quant_{sample}.log')
     conda:
-        "../envs/salmon.yaml"
+        WORKDIR + "/workflow/envs/salmon.yaml"
     threads:
         SALMON_QUANT_THREADS
     script:
-        "../scripts/salmon_quant.py"
+        WORKDIR + "/workflow/scripts/salmon_quant.py"

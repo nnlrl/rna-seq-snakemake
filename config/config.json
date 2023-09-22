@@ -9,7 +9,7 @@
         "yield_size": 2000000
     },
     "execution": {
-        "jobs": 16,
+        "jobs": 8,
         "memory": 16384,
         "nice": 19,
         "rules": {
@@ -97,18 +97,18 @@
         "target": null
     },
     "locations": {
-        "cdna-fasta": "/home/nnlrl/genome/pig/Sus_scrofa.Sscrofa11.1.cdna.all.fa",
-        "genome-fasta": "/home/nnlrl/genome/pig/Sus_scrofa.Sscrofa11.1.dna.toplevel.fa",
-        "gtf-file": "/home/nnlrl/genome/pig/Sus_scrofa.Sscrofa11.1.104.gtf",
-        "output-dir": "/home/nnlrl/ngs/rna/output",
-        "reads-dir": "/mnt/f/pig_lcdm",
+        "cdna-fasta": "/home/nnlrl/genome/homo_sapiens/gencode.v43.transcripts.fa",
+        "genome-fasta": "/home/nnlrl/genome/homo_sapiens/GRCh38.primary_assembly.genome.fa",
+        "gtf-file": "/home/nnlrl/genome/homo_sapiens/hg38.refGene.gtf",
+        "output-dir": "/mnt/f/yanhuimin/res",
+        "reads-dir": "/mnt/f/lichen/human_ESCs",
         "sample-sheet": "/home/nnlrl/ngs/rna/config/sample_sheet.csv"
     },
     "mapping": {
-        "genome_build": "GRCm38",
+        "genome_build": "Hsapiens",
         "mapper": "hisat2"
     },
-    "organism": "",
+    "organism": "hsapiens",
     "tools": {
         "Rscript": {
             "args": "--vanilla",

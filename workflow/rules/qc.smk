@@ -9,6 +9,6 @@ rule multiqc:
     log:
         os.path.join(LOG_DIR, f'multiqc.{MAPPER}.log')
     conda:
-        "../envs/multiqc.yaml"
+        WORKDIR + "/workflow/envs/multiqc.yaml"
     shell:
         "{MULTIQC_EXEC} -f -o {MULTIQC_DIR} {OUTPUT_DIR} >> {log} 2>&1"

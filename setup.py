@@ -508,7 +508,7 @@ if args.graph:
         p2.communicate()
 else:
     # prepare_links()
-    cleanup()
+    # cleanup()
     if args.conda_create_envs_only:
         command.append("--conda-create-envs-only")
     if args.force:

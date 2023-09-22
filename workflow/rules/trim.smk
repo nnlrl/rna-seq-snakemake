@@ -10,7 +10,7 @@ rule trim_qc_reads_pe:
     log:
         os.path.join(LOG_DIR, 'trim_reads.{sample}.log')
     conda:
-        "../envs/fastp.yaml"
+        WORKDIR + "/workflow/envs/fastp.yaml"
     shell:
         "{FASTP_EXEC} --in1 {input[0]} --in2 {input[1]} --out1 {output.r1} --out2 {output.r2} -h {output.html} -j {output.json} >> {log} 2>&1"
 
@@ -26,6 +26,6 @@ rule trim_qc_reads_se:
     log:
         os.path.join(LOG_DIR, 'trim_reads.{sample}.log')
     conda:
-        "../envs/fastp.yaml"
+        WORKDIR + "/workflow/envs/fastp.yaml"
     shell:
         "{FASTP_EXEC} --in1 {input[0]} --out1 {output.r} -h {output.html} -j {output.json} >> {log} 2>&1 "

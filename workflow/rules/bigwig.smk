@@ -13,10 +13,10 @@ rule genomeCoverage:
     resources:
         mem_mb = config["execution"]["rules"]["coverage_bamCoverage"]["memory"]
     conda:
-        "../envs/bamCoverage.yaml"
+        WORKDIR + "/workflow/envs/bamCoverage.yaml"
     shell:
         """
         {BAMCOVERAGE_EXEC} -b {input.bam} -o {output[0]} --filterRNAstrand forward >> {log[0]} 2>&1
         {BAMCOVERAGE_EXEC} -b {input.bam} -o {output[1]} --filterRNAstrand reverse >> {log[1]} 2>&1
-        {BAMCOVERAGE_EXEC} -b {input.bam} -o {output[2]} >> {log[2]} 2>&1
+        {BAMCOVERAGE_EXEC} -b {input.bam} --normalizeUsing RPKM --binSize 100 -o {output[2]} >> {log[2]} 2>&1
         """

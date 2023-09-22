@@ -6,6 +6,8 @@ from snakemake.utils import validate
 
 ############ vars ############
 
+WORKDIR           = "/home/nnlrl/ngs/rna"
+
 GENOME_FASTA      = config['locations']['genome-fasta']
 CDNA_FASTA        = config['locations']['cdna-fasta']
 READS_DIR         = config['locations']['reads-dir']
@@ -14,7 +16,7 @@ ORGANISM          = config['organism']
 MAPPER            = config['mapping']['mapper']
 GENOME_BUILD      = config['mapping']['genome_build']
 
-SCRIPTS_DIR       = '../workflow/scripts'
+SCRIPTS_DIR       = WORKDIR + '/workflow/scripts'
 
 TRIMMED_READS_DIR = os.path.join(OUTPUT_DIR, 'trimmed_reads')
 LOG_DIR           = os.path.join(OUTPUT_DIR, 'logs')
